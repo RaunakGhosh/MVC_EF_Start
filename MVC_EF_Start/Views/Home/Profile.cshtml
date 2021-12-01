@@ -1,0 +1,122 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <style>
+
+
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial;
+        }
+
+        /* Center website */
+        .main {
+            width: 100%;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 50px;
+            word-break: break-all;
+        }
+
+        .row {
+            margin: 8px -16px;
+        }
+
+            /* Add padding BETWEEN each column */
+            .row,
+            .row > .column {
+                padding: 10px;
+            }
+
+        /* Create 3 equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 30%;
+        }
+
+        /* Clear floats after rows */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Content */
+        .content {
+            background-color: white;
+            padding: 10px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="topnav">
+        <a href="index.html">Project</a>
+        <a href="table1.html">Grade Data</a>
+        <a href="table2.html">Level numeric Data</a>
+        <a href="table3.html">Level percentage Data</a>
+        <a class="active" href="profile.html">About us</a>
+    </div>
+    <!-- MAIN (Center website) -->
+    <div class="main">
+
+        <h1>About Project</h1>
+        <p>We are building a website which shows the Data for New York State Mathetmatics Tests for grades 3-8 from the years 2006 till 2011.<br /> showcasing API endpoint for the data : <a href="https://data.cityofnewyork.us/resource/825b-niea.json"> API link in JSON</a> </p>
+        <hr>
+
+        <h2>PORTFOLIO</h2>
+
+        <!-- Portfolio Gallery Grid -->
+        <div class="row">
+            <div class="column">
+                <div class="content">
+                    <img src="my-pic.jpg" alt="Raunak" style="width:100%">
+                    <h3>Raunak Ghosh</h3>
+                    <p>
+                        Master's student in Business Analytics and Information Systems in University of South Florida.
+                        Worked as a Java developer for Cognizant and Infosys.
+                        For the assignment, I worked on web framework, image transition animations, ERD design and layouts in website.
+                    </p>
+                    <a href="https://github.com/RaunakGhosh">Git</a>
+                    <a href="https://www.linkedin.com/in/raunakghoshprofile/">LinkedIn</a>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <img src="Enock.jpg" alt="Enock" style="width:100%">
+                    <h3>Enock</h3>
+                    <p> Master of Business Analytics & Information Systems student at The University of South Florida and a certified data whisperer working with The AI Institute (France) and iXperience (South Africa). In this project, he worked on the datasets for the tables and creating the content for the pages.</p>
+                    <a href="https://github.com/echemochek">Git</a>
+                    <a href="https://www.linkedin.com/in/enock-chemochek/">LinkedIn</a>
+                </div>
+            </div>
+            <div class="column">
+                <div class="content">
+                    <img src="abhi.jpg" alt="Abhi" style="width:100%">
+                    <h3>Abhimanyu</h3>
+                    <p>Worked on responsive layout design, color schemes and JavaScript for fade in animations</p>
+                    <a href="https://github.com/Abhimanyu789">Git</a>
+                </div>
+            </div>
+
+            <!-- END GRID -->
+        </div>
+        <h3>Database model driving the website</h3>
+        <div class="content">
+            <img src="ERD.png" alt="ERD" style="width: 50% ">
+
+        </div>
+
+
+
+        <!-- END MAIN -->
+    </div>
+
+</body>
+</html>

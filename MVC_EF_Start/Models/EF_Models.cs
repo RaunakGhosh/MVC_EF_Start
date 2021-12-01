@@ -1,40 +1,69 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MVC_EF_Start.Models
 {
-    public class Company
+    public class PatientsRecord
     {
-        public string Id { get; set; }
-        public string name { get; set; }
-        public string date { get; set; }
-        public bool isEnabled { get; set; }
-        public string type { get; set; }
-        public string iexId { get; set; }
-        public List<Quote> Quotes { get; set; }
+        [Key]
+        public int patientID { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public int age { get; set; }
+        public string email { get; set; }
+        public int mobile { get; set; }
+        public List<PrescriptionRecord> Prescriptions { get; set; }
+        public List<AppointmentRecord> Appointments { get; set; }
     }
 
-    public class Quote
+    public class AppointmentRecord
     {
-        public int Id { get; set; }
-        public string date { get; set; }
-        public float open { get; set; }
-        public float high { get; set; }
-        public float low { get; set; }
-        public float close { get; set; }
-        public int volume { get; set; }
-        public int unadjustedVolume { get; set; }
-        public float change { get; set; }
-        public float changePercent { get; set; }
-        public float vwap { get; set; }
-        public string label { get; set; }
-        public float changeOverTime { get; set; }
-        public string ClassDemo { get; set; }
-        public Company Company { get; set; }
+        [Key]
+        public int appointmentID { get; set; }
+        public PatientsRecord patient { get; set; }
+        public doctorVisit doc { get; set; }
+        public DateTime dateVisited { get; set; }
+    }
+    public class PrescriptionRecord
+    {
+        [Key]
+        public int prescriptionID { get; set; }
+        public PatientsRecord patient { get; set; }
+        public doctorVisit doc { get; set; }
+        public AppointmentRecord appoint { get; set; }
+        public List<MedicineRecord> Medicines { get; set; }
+
+    }
+    public class doctorVisit
+    {
+        [Key]
+        public int doctorID { get; set; }
+        public string doctorFirstName { get; set; }
+        public string doctorLastName { get; set; }
+        public int patientCount { get; set; }
+        public List<PrescriptionRecord> Prescriptions { get; set; }
+        public List<AppointmentRecord> Appointments { get; set; }
+    }
+    public class MedicineRecord
+    {
+        [Key]
+        public int medicineID { get; set; }
+        public BrandRecord brand { get; set; }
+        public PrescriptionRecord prescription { get; set; }
+        public string medicineName { get; set; }
+        public int price { get; set; }
+        public Boolean isRegulated { get; set; }
     }
 
-    public class ChartRoot
+    public class BrandRecord
     {
-        public Quote[] chart { get; set; }
+        [Key]
+        public int brandId { get; set; }
+        public string brandName { get; set; }
+        public List<MedicineRecord> medicines { get; set; }
+
     }
+
+   
 }

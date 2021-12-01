@@ -6,8 +6,12 @@ namespace MVC_EF_Start.DataAccess
   public class ApplicationDbContext : DbContext
   {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
+        public DbSet<doctorVisit> Doctors { get; set; }
+        public DbSet<PatientsRecord> Patients { get; set; }
+        public DbSet<AppointmentRecord> Appointments { get; set; }
+        public DbSet<PrescriptionRecord> Prescriptions { get; set; }
+        public DbSet<MedicineRecord> Medicines { get; set; }
+        public DbSet<BrandRecord> Brands { get; set; }
 
-    public DbSet<Company> Companies { get; set; }
-    public DbSet<Quote> Quotes { get; set; }
-  }
+    }
 }
