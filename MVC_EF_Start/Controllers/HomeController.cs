@@ -39,7 +39,7 @@ namespace MVC_EF_Start.Controllers
 
             httpClient.BaseAddress = new Uri(NATIONAL_PARK_API_PATH);
             //httpClient.BaseAddress = new Uri(BASE_URL);
-
+            
             try
             {
                 HttpResponseMessage response = httpClient.GetAsync(NATIONAL_PARK_API_PATH)
@@ -48,10 +48,69 @@ namespace MVC_EF_Start.Controllers
                 //                                        .GetAwaiter().GetResult();
 
 
-
+                string category = null;
+                string year = null;
+                string grade = null;
+                string number_tested = null;
+                String mean_score = null;
+                String level_1_1 = null;
+                String level_1_2 = null;
+                String level_2_1 = null;
+                String level_2_2 = null;
+                String level_3_1 = null;
+                String level_3_2 = null;
+                String level_4_1 = null;
+                String level_4_2 = null;
+                String level_3_4_1 = null;
+                String level_3_4_2 = null;
                 if (response.IsSuccessStatusCode)
                 {
                     parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+
+                    foreach (var x in parksData)
+                    {
+                         category = x['category'];
+                         year = x['year'];
+                         grade = x['grade'];
+                         number_tested = x['number_tested'];
+                         mean_score = x['mean_scale_score'];
+                         level_1_1 = x['level_1_1'];
+                         level_1_2 = x['level_1_2'];
+                         level_2_1 = x['level_2_1'];
+                         level_2_2 = x['level_2_2'];
+                         level_3_1 = x['level_3_1'];
+                         level_3_2 = x['level_3_2'];
+                         level_4_1 = x['level_4_1'];
+                         level_4_2 = x['level_4_2'];
+                         level_3_4_1 = x['level_3_4_1'];
+                         level_3_4_2 = x['level_3_4_2'];
+                    }
+
+
+                    Exam exam1 = new Exam();
+                    Participants participants1 = new Participants();
+                    Category category1 = new Category();
+             
+                    exam1.mean_scale_score = mean_score;
+                    exam1.number_tested = number_tested;
+                    exam1.level_1_1 = level_1_1;
+                    exam1.level_1_2 = level_1_2;
+                    exam1.level_2_1 = level_2_1;
+                    exam1.level_2_2 = level_2_2;
+                    exam1.level_3_1 = level_3_1;
+                    exam1.level_3_2 = level_3_2;
+                    exam1.level_4_1 = level_4_1;
+                    exam1.level_4_2 = level_4_2;
+                    exam1.level_3_4_1 = level_3_4_1;
+                    exam1.level_3_4_2 = level_3_4_2;
+
+                    participants1.grade = grade;
+                    participants1.year = year;
+
+                    category1.category = category;
+
+
+                }
                 }
 
 
@@ -65,7 +124,12 @@ namespace MVC_EF_Start.Controllers
             return View();
         }
 
-        public IActionResult IndexWithLayout()
+        public IActionResult CreateStudent()
+        {
+            return View();
+        }
+
+        public IActionResult UpdateStudent()
         {
             return View();
         }
