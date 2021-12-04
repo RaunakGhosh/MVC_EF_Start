@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MVC_EF_Start.DataAccess;
 // https://stackoverflow.com/a/58072137/1385857
 using Microsoft.Extensions.Hosting;
+using MVC_EF_Start.Models;
 
 namespace MVC_EF_Start
 {

@@ -1,6 +1,5 @@
-﻿@model MVC_EF_Start.Models.Category
-@model MVC_EF_Start.Models.Exam
-@model MVC_EF_Start.Models.Participants
+﻿@model IEnumerable<MVC_EF_Start.Models.Exam> 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -34,26 +33,66 @@
 </head>
 
 <body>
+    <h1>index</h1>
 
+    <p>
+        <a asp-action="Create">Create new</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+         
+                <th>
+                    @Html.DisplayNameFor(model => model.level_1_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.level_1_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.level_2_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.level_2_2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.level_3_1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.level_3_2)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+              
+                @Html.DisplayNameFor(model => model.level_1_1)
+               
+                @Html.DisplayNameFor(model => model.level_1_2)
+            
+                @Html.DisplayNameFor(model => model.level_2_1)
+          
+                @Html.DisplayNameFor(model => model.level_2_2)
+           
+                @Html.DisplayNameFor(model => model.level_3_1)
+         
+                @Html.DisplayNameFor(model => model.level_3_2)
+                }
 
+                </tbody>
+        </table>
     <div class="topnav">
 
         <a class="active" href="">Home</a>
-        @*@<a asp-controller="/table1.cshtml">Grade Data</a>*@
-        <a asp-area="" asp-controller="Home" asp-action="CreateStudent">Grade Data</a>
-        @*<a @Html.ActionLink("Grade Data", "table1", "Home")></a>*@
-        @*<a href="Table2.cshtml">Level Numeric Data</a>*@
+        <a asp-area="" asp-controller="Home" asp-action="">Grade Data</a>
+      
         <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
-        @*<a href="Table3.cshtml">Level Percentage Data</a>*@
+      
         <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
-        @*@<a href="Profile.cshtml">About Us</a>*@
+      
         <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
         <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
-        @*<a class="active" href="index.html">Project</a>
-            <a href="table1.html">Grade Data</a>
-            <a href="table2.html">Level Numeric Data</a>
-            <a href="table3.html">Level Percentage Data</a>
-            <a href="profile.html">About Us</a>*@
+      
     </div>
     <!-- Slideshow container -->
     <div class="slideshow-container">

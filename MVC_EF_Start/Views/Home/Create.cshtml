@@ -1,0 +1,93 @@
+﻿@model MVC_EF_Start.Models.Exam
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Exam</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="examID" class="control-label"></label>
+                <input asp-for="examID" class="form-control" />
+                <span asp-validation-for="examID" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+                <label asp-for="mean_scale_score" class="control-label"></label>
+                <input asp-for="mean_scale_score" class="form-control" />
+                <span asp-validation-for="mean_scale_score" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="number_tested" class="control-label"></label>
+                <input asp-for="number_tested" class="form-control" />
+                <span asp-validation-for="number_tested" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="level_1_1" class="control-label"></label>
+                <input asp-for="level_1_1" class="form-control" />
+                <span asp-validation-for="level_1_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_1_2" class="control-label"></label>
+                <input asp-for="level_1_2" class="form-control" />
+                <span asp-validation-for="level_1_2" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="level_2_1" class="control-label"></label>
+                <input asp-for="level_2_1" class="form-control" />
+                <span asp-validation-for="level_2_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_2_2" class="control-label"></label>
+                <input asp-for="level_2_2" class="form-control" />
+                <span asp-validation-for="level_2_2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_3_1" class="control-label"></label>
+                <input asp-for="level_3_1" class="form-control" />
+                <span asp-validation-for="level_3_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_3_2" class="control-label"></label>
+                <input asp-for="level_3_2" class="form-control" />
+                <span asp-validation-for="level_3_2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_4_1" class="control-label"></label>
+                <input asp-for="level_4_1" class="form-control" />
+                <span asp-validation-for="level_4_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_4_2" class="control-label"></label>
+                <input asp-for="level_4_2" class="form-control" />
+                <span asp-validation-for="level_4_2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_3_4_1" class="control-label"></label>
+                <input asp-for="level_3_4_1" class="form-control" />
+                <span asp-validation-for="level_3_4_1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="level_3_4_2" class="control-label"></label>
+                <input asp-for="level_3_4_2" class="form-control" />
+                <span asp-validation-for="level_3_4_2" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

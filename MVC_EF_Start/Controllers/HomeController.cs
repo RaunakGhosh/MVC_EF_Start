@@ -13,10 +13,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
+using Nancy.Json;
+using MVC_EF_Start.DataAccess;
+using Microsoft.EntityFrameworkCore;
+
 namespace MVC_EF_Start.Controllers
 {
   public class HomeController : Controller
   {
+        public ApplicationDbContext dbcontext;
+        public HomeController(ApplicationDbContext context)
+        {
+            dbcontext = context;
+        }
         HttpClient httpClient;
 
         static string BASE_URL = "https://data.cityofnewyork.us/resource/hv77-qnda.json";
@@ -46,75 +56,105 @@ namespace MVC_EF_Start.Controllers
                                                         .GetAwaiter().GetResult();
                 //HttpResponseMessage response = httpClient.GetAsync(BASE_URL)
                 //                                        .GetAwaiter().GetResult();
+               
 
-
-                string category = null;
-                string year = null;
-                string grade = null;
-                string number_tested = null;
-                String mean_score = null;
-                String level_1_1 = null;
-                String level_1_2 = null;
-                String level_2_1 = null;
-                String level_2_2 = null;
-                String level_3_1 = null;
-                String level_3_2 = null;
-                String level_4_1 = null;
-                String level_4_2 = null;
-                String level_3_4_1 = null;
-                String level_3_4_2 = null;
+                
+                
                 if (response.IsSuccessStatusCode)
                 {
                     parksData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    //jArray = JArray.Parse(parksData);
+                    
+                    //output = JsonConvert.SerializeObject(parksData);
+                }
+                JArray jarray = JArray.Parse(parksData);
+                List<Exam> examItems = ((JArray)jarray).Select(x => new Exam
+                {
+                    mean_scale_score = (string)x["mean_scale_score"],
+                    number_tested = (string)x["number_tested"],
+                    level_1_1 = (string)x["level_1_1"],
+                    level_1_2 = (string)x["level_1_2"],
+                    level_2_1 = (string)x["level_2_1"],
+                    level_2_2 = (string)x["level_2_2"],
+                    level_3_1 = (string)x["level_3_1"],
+                    level_3_2 = (string)x["level_3_2"],
+                    level_4_1 = (string)x["level_4_1"],
+                    level_4_2 = (string)x["level_4_2"],
+                    level_3_4_1 = (string)x["level_3_4_1"],
+                    level_3_4_2 = (string)x["level_3_4_2"]
+                }).ToList();
 
-                    foreach (var x in parksData)
+                List<Participants> partItems = ((JArray)jarray).Select(x => new Participants
+                {
+                    grade = (string)x["grade"],
+                    year = (string)x["year"],
+                   
+                }).ToList();
+
+                List<Category> catItems = ((JArray)jarray).Select(x => new Category
+                {
+                    category = (string)x["category"]
+
+                }).ToList();
+                //foreach (var x in examItems)
+                //{
+                   
+                    
+                //    //year = x['year'];
+                //    //grade = x['grade'];
+                //    //number_tested = x['number_tested'];
+                //    //mean_score = x['mean_scale_score'];
+                //    //level_1_1 = x['level_1_1'];
+                //    //level_1_2 = x['level_1_2'];
+                //    //level_2_1 = x['level_2_1'];
+                //    //level_2_2 = x['level_2_2'];
+                //    //level_3_1 = x['level_3_1'];
+                //    //level_3_2 = x['level_3_2'];
+                //    //level_4_1 = x['level_4_1'];
+                //    //level_4_2 = x['level_4_2'];
+                //    //level_3_4_1 = x['level_3_4_1'];
+                //    //level_3_4_2 = x['level_3_4_2'];
+                //}
+                    foreach(var i in examItems)
+                {
+                    Exam e1 = new Exam()
                     {
-                         category = x['category'];
-                         year = x['year'];
-                         grade = x['grade'];
-                         number_tested = x['number_tested'];
-                         mean_score = x['mean_scale_score'];
-                         level_1_1 = x['level_1_1'];
-                         level_1_2 = x['level_1_2'];
-                         level_2_1 = x['level_2_1'];
-                         level_2_2 = x['level_2_2'];
-                         level_3_1 = x['level_3_1'];
-                         level_3_2 = x['level_3_2'];
-                         level_4_1 = x['level_4_1'];
-                         level_4_2 = x['level_4_2'];
-                         level_3_4_1 = x['level_3_4_1'];
-                         level_3_4_2 = x['level_3_4_2'];
-                    }
-
-
-                    Exam exam1 = new Exam();
-                    Participants participants1 = new Participants();
-                    Category category1 = new Category();
-             
-                    exam1.mean_scale_score = mean_score;
-                    exam1.number_tested = number_tested;
-                    exam1.level_1_1 = level_1_1;
-                    exam1.level_1_2 = level_1_2;
-                    exam1.level_2_1 = level_2_1;
-                    exam1.level_2_2 = level_2_2;
-                    exam1.level_3_1 = level_3_1;
-                    exam1.level_3_2 = level_3_2;
-                    exam1.level_4_1 = level_4_1;
-                    exam1.level_4_2 = level_4_2;
-                    exam1.level_3_4_1 = level_3_4_1;
-                    exam1.level_3_4_2 = level_3_4_2;
-
-                    participants1.grade = grade;
-                    participants1.year = year;
-
-                    category1.category = category;
-
-
+                        mean_scale_score = i.mean_scale_score,
+                        number_tested = i.number_tested,
+                        level_1_1 = i.level_1_1,
+                        level_1_2 = i.level_1_2,
+                        level_2_1 = i.level_2_1,
+                        level_2_2 = i.level_2_2,
+                        level_3_1 = i.level_3_1,
+                        level_3_2 = i.level_3_2,
+                        level_4_1 = i.level_4_1,
+                        level_4_2 = i.level_4_2,
+                        level_3_4_1 = i.level_3_4_1,
+                        level_3_4_2 = i.level_3_4_2
+                    };
+                    dbcontext.Exams.Add(e1);
                 }
+                foreach (var i in partItems)
+                {
+                    Participants p1 = new Participants()
+                    {
+                        grade = i.grade,
+                        year = i.year
+                    };
+                    dbcontext.Participants.Add(p1);
                 }
+                foreach (var i in catItems)
+                {
+                    Category c1 = new Category()
+                    {
+                        category = i.category
+      
+                    };
+                    dbcontext.Category.Add(c1);
+                }
+                dbcontext.SaveChanges();
 
-
-                return View();
+               
             }
             catch (Exception e)
             {
@@ -123,24 +163,32 @@ namespace MVC_EF_Start.Controllers
             }
             return View();
         }
-
-        public IActionResult CreateStudent()
+        public IActionResult Create()
         {
+            
             return View();
         }
-
-        public IActionResult UpdateStudent()
+        [HttpPost]
+        public async Task<IActionResult> Create(Exam e)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                dbcontext.Add(e);
+                await dbcontext.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(e);
         }
 
-        public IActionResult Contact()
-        {
-            GuestContact contact = new GuestContact();
+      
 
-            contact.Name = "Manish Agrawal";
-            contact.Email = "magrawal@usf.edu";
-            contact.Phone = "813-974-6716";
+        //public IActionResult Contact()
+        //{
+        //    //GuestContact contact = new GuestContact();
+
+        //    contact.Name = "Manish Agrawal";
+        //    contact.Email = "magrawal@usf.edu";
+        //    contact.Phone = "813-974-6716";
 
 
             /* alternate syntax to initialize object 
@@ -154,8 +202,8 @@ namespace MVC_EF_Start.Controllers
 
             //ViewData["Message"] = "Your contact page.";
 
-            return View(contact);
-        }
+        //    return View(contact);
+        //}
         //public IActionResult Demo()
         //{
         //    Demo demo = new Demo();
@@ -168,11 +216,11 @@ namespace MVC_EF_Start.Controllers
         //    return View(demo);
         //}
 
-        [HttpPost]
-        public IActionResult Contact(GuestContact contact)
-        {
-            return View(contact);
-        }
+        //[HttpPost]
+        //public IActionResult Contact(GuestContact contact)
+        //{
+        //    return View(contact);
+        //}
 
         /// <summary>
         /// Replicate the chart example in the JavaScript presentation
@@ -183,20 +231,79 @@ namespace MVC_EF_Start.Controllers
         ///   Hence we join the elements in the collections into strings in the view model
         /// </summary>
         /// <returns>View that will display the chart</returns>
-        public ViewResult DemoChart()
+        public IActionResult Update(string cond)
         {
-            string[] ChartLabels = new string[] { "Africa", "Asia", "Europe", "Latin America", "North America" };
-            int[] ChartData = new int[] { 2478, 5267, 734, 784, 433 };
+            
+            //fetch the records which match the given condition
+            var level = dbcontext.Exams.Where(c => c.level_1_1 == cond).First();
 
-            ChartModel Model = new ChartModel
+            return View(level);
+        }
+        [HttpPost]
+        public IActionResult UpdateRecord(Exam data)
+        {
+            var exe = dbcontext.Exams.FirstOrDefault(x => x.examID == data.examID);
+
+            if (exe != null)
             {
-                ChartType = "bar",
-                Labels = String.Join(",", ChartLabels.Select(d => "'" + d + "'")),
-                Data = String.Join(",", ChartData.Select(d => d)),
-                Title = "Predicted world population (millions) in 2050"
-            };
+                exe.level_1_1 = data.level_1_1;
+                dbcontext.SaveChanges();
+            }
 
-            return View(Model);
+
+
+            return RedirectToAction("mean", new { val = exe.mean_scale_score });
+        }
+        public IActionResult Delete(string cond)
+        {
+            var exe = dbcontext.Exams.FirstOrDefault(x => x.number_tested == cond);
+            if (exe != null)
+            {
+                dbcontext.Exams.Remove(exe);
+                dbcontext.SaveChanges();
+                TempData["shortMessage"] = "Deleted Successfully";
+            }
+
+
+
+            return RedirectToAction("mean", new { val = exe.mean_scale_score });
+        }
+        public ViewResult DemoChart(Exam e)
+        {
+            string[] chartcols = { "#FFA07A", "#E9967A" };
+            List<string> levels = new List<string>();
+            levels.Add("level 1");levels.Add("Level 1 %");
+            List<int> counts = new List<int>();
+            try
+            {
+                for (int i = 0; i < levels.Count; i++)
+                {
+                    var x = levels[i];
+                    var lev = dbcontext.Exams.Where(c => c.level_1_1 == x).FirstOrDefault();
+                    if (lev == null)
+                        counts.Add(0);
+                    else
+                    {
+                        var lev_end = dbcontext.Exams.Where(c => c.level_1_1 == lev.level_1_1).ToList();
+                        counts.Add(lev_end.Count);
+                    }
+                }
+            }
+            catch (Exception el)
+            {
+                Console.WriteLine(el.Message);
+
+            }
+            ViewBag.levelcount = String.Join(",", counts.Select(d => d));
+            ViewBag.level = String.Join(",", levels.Select(d => "'" + d + "'"));
+            ViewBag.colors = String.Join(",", chartcols.Select(d => "'" + d + "'"));
+
+
+
+            return View();
+
+
+
         }
     }
 }
