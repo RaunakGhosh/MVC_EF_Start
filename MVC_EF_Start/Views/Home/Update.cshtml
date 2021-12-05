@@ -12,11 +12,11 @@
     <div class="col-md-4">
         <form asp-action="Update">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="examID" class="control-label"></label>
                 <input asp-for="examID" class="form-control" readonly/>
                 <span asp-validation-for="examID" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="mean_scale_score" class="control-label"></label>
                 <input asp-for="mean_scale_score" class="form-control" />

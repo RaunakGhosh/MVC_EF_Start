@@ -96,6 +96,7 @@ namespace MVC_EF_Start.Controllers
                 {
                     category = (string)x["category"]
 
+
                 }).ToList();
                 
                     foreach(var i in examItems)
@@ -113,7 +114,8 @@ namespace MVC_EF_Start.Controllers
                         level_4_1 = i.level_4_1,
                         level_4_2 = i.level_4_2,
                         level_3_4_1 = i.level_3_4_1,
-                        level_3_4_2 = i.level_3_4_2
+                        level_3_4_2 = i.level_3_4_2,
+                        //cat_id = i.cat_id
                     };
 
                     dbcontext.Exams.Add(e1);
@@ -135,7 +137,8 @@ namespace MVC_EF_Start.Controllers
                 {
                     Category c1 = new Category()
                     {
-                        category = i.category
+                        category = i.category,
+                       
       
                     };
                     dbcontext.Category.Add(c1);
@@ -157,9 +160,11 @@ namespace MVC_EF_Start.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Participants e)
+        public async Task<IActionResult> Create(Exam e)
         {
-           if(ModelState.IsValid)
+
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            if (ModelState.IsValid)
             {
                 dbcontext.Add(e);
                 await dbcontext.SaveChangesAsync();
@@ -183,7 +188,7 @@ namespace MVC_EF_Start.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(Exam data)
         {
-
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
             if (ModelState.IsValid)
             {
                 dbcontext.Update(data);

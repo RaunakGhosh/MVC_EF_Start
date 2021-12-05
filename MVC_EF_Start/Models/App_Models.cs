@@ -29,8 +29,7 @@ namespace MVC_EF_Start.Models
         public string level_4_2 { get; set; }
         public string level_3_4_1 { get; set; }
         public string level_3_4_2 { get; set; }
-        [Required]
-        public Category cat_id { get; set; }
+       
         
     }
     public class Participants
