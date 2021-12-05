@@ -221,33 +221,27 @@ namespace MVC_EF_Start.Controllers
         }
         public ViewResult DemoChart()
         {
-            string[] chartcols = { "#FFA07A", "#E9967A" };
-            List<string> levels = new List<string>();
-            levels.Add("level 1");levels.Add("Level 1 %");
-            List<int> counts = new List<int>();
-            try
-            {
-                for (int i = 0; i < levels.Count; i++)
-                {
-                    var x = levels[i];
-                    var lev = dbcontext.Exams.Where(c => c.level_1_1 == x).FirstOrDefault();
-                    if (lev == null)
-                        counts.Add(0);
-                    else
-                    {
-                        var lev_end = dbcontext.Exams.Where(c => c.level_1_1 == lev.level_1_1).ToList();
-                        counts.Add(lev_end.Count);
-                    }
-                }
-            }
-            catch (Exception el)
-            {
-                Console.WriteLine(el.Message);
+            var results = (from x in dbcontext.Participants
+                          
+                           select new
+                           {
+                               grade = x.grade
+                           }).Take(5);
 
-            }
-            ViewBag.levelcount = String.Join(",", counts.Select(d => d));
-            ViewBag.level = String.Join(",", levels.Select(d => "'" + d + "'"));
-            ViewBag.colors = String.Join(",", chartcols.Select(d => "'" + d + "'"));
+
+
+            int[] label = new int[] { 1,2,3,4 };
+            List<int> labels = new List<int>(label);
+
+
+
+            List<string> ChartLabels = new List<string>();
+            ChartLabels = results.Select(p => p.grade).ToList();
+           
+            ViewBag.Labels = String.Join(",", ChartLabels.Select(d => "'" + d + "'"));
+            ViewBag.Data = String.Join(",", labels.Select(d => d));
+
+
 
 
 
