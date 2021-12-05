@@ -149,7 +149,7 @@ namespace MVC_EF_Start.Controllers
                 // This is a useful place to insert a breakpoint and observe the error message
                 Console.WriteLine(e.Message);
             }
-            return View();
+            return View(ViewBag.e1);
         }
         public IActionResult Create()
         {
@@ -165,68 +165,10 @@ namespace MVC_EF_Start.Controllers
                 await dbcontext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(e);
+            return View();
         }
 
       
-
-        //public IActionResult Contact()
-        //{
-        //    //GuestContact contact = new GuestContact();
-
-        //    contact.Name = "Manish Agrawal";
-        //    contact.Email = "magrawal@usf.edu";
-        //    contact.Phone = "813-974-6716";
-
-
-            /* alternate syntax to initialize object 
-            GuestContact contact2 = new GuestContact
-            {
-              Name = "Manish Agrawal",
-              Email = "magrawal@usf.edu",
-              Phone = "813-974-6716"
-            };
-            */
-
-            //ViewData["Message"] = "Your contact page.";
-
-        //    return View(contact);
-        //}
-        //public IActionResult Demo()
-        //{
-        //    Demo demo = new Demo();
-
-        //    demo.name = "Clue";
-        //    demo.age = "eleven";
-
-
-
-        //    return View(demo);
-        //}
-
-        //[HttpPost]
-        //public IActionResult Contact(GuestContact contact)
-        //{
-        //    return View(contact);
-        //}
-
-        /// <summary>
-        /// Replicate the chart example in the JavaScript presentation
-        /// 
-        /// Typically LINQ and SQL return data as collections.
-        /// Hence we start the example by creating collections representing the x-axis labels and the y-axis values
-        /// However, chart.js expects data as a string, not as a collection.
-        ///   Hence we join the elements in the collections into strings in the view model
-        /// </summary>
-        /// <returns>View that will display the chart</returns>
-        //public IActionResult Update(string cond)
-        //{
-            
-        //    //fetch the records which match the given condition
-        //    var level = dbcontext.Exams.Where(c => c.level_1_1 == cond).First();
-
-        //    return View(level);
-        //}
         public async Task<IActionResult> Update(int? id)
         {
             if (id == null)
@@ -259,19 +201,23 @@ namespace MVC_EF_Start.Controllers
             var getExamDetails = await dbcontext.Exams.FindAsync(id);
             return View(getExamDetails);
         }
-        public IActionResult Delete(string cond)
+        public async Task<IActionResult> Delete(int? id)
         {
-            var exe = dbcontext.Exams.FirstOrDefault(x => x.number_tested == cond);
-            if (exe != null)
+            if (id == null)
             {
-                dbcontext.Exams.Remove(exe);
-                dbcontext.SaveChanges();
-                TempData["shortMessage"] = "Deleted Successfully";
+                return RedirectToAction("Index");
             }
+            var getExamDetails = await dbcontext.Exams.FindAsync(id);
+            return View(getExamDetails);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
 
-
-
-            return RedirectToAction("mean", new { val = exe.mean_scale_score });
+            var getdet = await dbcontext.Exams.FindAsync(id);
+            dbcontext.Exams.Remove(getdet);
+            await dbcontext.SaveChangesAsync();
+            return View(getdet);
         }
         public ViewResult DemoChart()
         {
