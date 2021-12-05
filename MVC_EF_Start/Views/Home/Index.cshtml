@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<MVC_EF_Start.Models.Exam>
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -34,9 +35,44 @@
 <body>
     <h1>index</h1>
 
-    <p>
-        <a asp-action="Create">Create new</a>
-    </p>
+    @{
+        List<Exam> data = ViewBag.e1;
+        
+        if (data != null)
+        {
+
+            @for (int i = 0; i < data.Count; i++)
+            {
+                <h1>@(i+1)</h1>
+
+
+                <div class="container1">
+                    <div class="header">
+                        <h2>@data[i].mean_scale_score</h2>
+                    </div>
+                    <div id="levels">
+                        <p style="float:left; padding-left: 29px;"><strong>Levels:</strong></p>
+                        <div style="float:left;padding-top:20px">
+                            <p>@data[i].level_1_1</p>
+                            <p>@ViewBag.level_1_2</p>
+                            <p>@ViewBag.level_2_1</p>
+                        </div>
+                    </div>
+                 
+                    <form asp-controller="Home" asp-action="create" method="get">
+                        <button class="btn btn-success" type="submit" name="examID" value=@data[i].examID asp-controller="Home" asp-action="create" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Create</button>
+                    </form>
+                    <form>
+                        <button type="submit" class="btn btn-primary btn-sm" name="examID" value=@data[i].examID asp-controller="Home" asp-action="update" style="float:left; margin-left:10px;border-radius:150px;">Update Details</button>
+                    </form>
+                    <form asp-controller="Home" asp-action="DeletePark" method="get">
+                        <button type="submit" class="btn btn-danger" name="examID" value=@data[i].examID asp-controller="Home" asp-action="delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
+                    </form>
+                </div>
+
+            }
+        }
+    }
     <table class="table">
         <thead>
             <tr>
@@ -62,94 +98,95 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in ViewBag.e1)
+            @*@foreach (var item in ViewBag.e1)
             {
-                <h1></h1>
+                <tr>
+                    <td>
+                        @item
+                    </td>
 
-                @*@Html.DisplayFor( item.level_1_1)
 
-                @Html.DisplayFor( item.level_1_2)*@
+                </tr>
 
-              
 
             <td> @Html.ActionLink("Update", "Update", new { id = item }, new { @class = "btn btn-primary" }) </td>
             <td> @Html.ActionLink("readData", "readData", new { id = item }, new { @class = "btn btn-success" }) </td>
-        }
+        }*@
 
             </tbody>
         </table>
-    <div class="topnav">
+        <div class="topnav">
 
-        <a class="active" href="">Home</a>
-        <a asp-area="" asp-controller="Home" asp-action="">Grade Data</a>
+            <a class="active" href="">Home</a>
+            <a asp-area="" asp-controller="Home" asp-action="">Grade Data</a>
 
-        <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
+            <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
 
-        <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
+            <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
 
-        <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
-        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+            <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
+            <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
 
-    </div>
-    <!-- Slideshow container -->
-    <div class="slideshow-container">
-        <!-- Full-width images with number and caption text -->
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 2</div>
-            <img src="mathtest.jpg" style="width:100%">
-            <div class="text" style="color:palegoldenrod; border:dashed; font-family: 'Lucida Sans Unicode'">Mathematics</div>
+        </div>
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 2</div>
+                <img src="mathtest.jpg" style="width:100%">
+                <div class="text" style="color:palegoldenrod; border:dashed; font-family: 'Lucida Sans Unicode'">Mathematics</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 2</div>
+                <img src="gender.png" style="width:100%">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
         </div>
 
-        <div class="mySlides fade">
-            <div class="numbertext">2 / 2</div>
-            <img src="gender.png" style="width:100%">
-        </div>
+        <h1>Math Test Results</h1>
+        <p>
+            The state of New York administers tests for students from early on in their academic journey, and the knowledge of numbers is an important part of that. Therefore, a math test is one of the tests administered. Results on the state's Mathematics Tests for Grades 3 - 8 are used in this project.
+        </p>
 
-        <!-- Next and previous buttons -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <br>
+        <p>
+            Notes:
 
-    <!-- The dots/circles -->
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-    </div>
-
-    <h1>Math Test Results</h1>
-    <p>
-        The state of New York administers tests for students from early on in their academic journey, and the knowledge of numbers is an important part of that. Therefore, a math test is one of the tests administered. Results on the state's Mathematics Tests for Grades 3 - 8 are used in this project.
-    </p>
-
-    <p>
-        Notes:
-
-        As of 2006, the New York State Education Department expanded the ELA and mathematics testing programs to Grades 3-8.
-        Previously, state tests were administered in Grades 4 and 8 and citywide tests were administered in Grades 3, 5, 6, and 7.
-    </p>
+            As of 2006, the New York State Education Department expanded the ELA and mathematics testing programs to Grades 3-8.
+            Previously, state tests were administered in Grades 4 and 8 and citywide tests were administered in Grades 3, 5, 6, and 7.
+        </p>
 
 
-    <h1>Proficiency Levels</h1>
-    <p>
+        <h1>Proficiency Levels</h1>
+        <p>
 
-        In 2006, NYSED treated District 75 students as a distinct geographic district. For 2007-2011, District 75 students are represented in their home districts and boroughs. Spreadsheets for District and Borough do not include District 75 students in 2006. Starting in 2010, NYSED changed the scale score required to meet each of the proficiency levels, increasing the number of questions students needed to answer correctly to meet proficiency.
+            In 2006, NYSED treated District 75 students as a distinct geographic district. For 2007-2011, District 75 students are represented in their home districts and boroughs. Spreadsheets for District and Borough do not include District 75 students in 2006. Starting in 2010, NYSED changed the scale score required to meet each of the proficiency levels, increasing the number of questions students needed to answer correctly to meet proficiency.
 
-    </p>
-
-
-    <table>
-        <tr>
-            <td> <button type="button" onclick="alert('Row Created')" asp-action="Create">Create Row</button></td>
-            
-            <td><button type="button" onclick="alert('Row Deleted')" asp-action="Delete">Delete Row</button></td>
-        </tr>
-    </table>
+        </p>
 
 
-    <!--JS link-->
-    <script src="./js/main.js"></script>
+        <table>
+            <tr>
+                <td> <button type="button" onclick="alert('Row Created')" asp-action="Create">Create Row</button></td>
 
-</body>
+                <td><button type="button" onclick="alert('Row Deleted')" asp-action="Delete">Delete Row</button></td>
+            </tr>
+        </table>
+
+
+        <!--JS link-->
+        <script src="./js/main.js"></script>
+
+    </body>
 
 </html>

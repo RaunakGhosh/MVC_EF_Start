@@ -33,9 +33,9 @@ namespace MVC_EF_Start.Controllers
         static string BASE_URL = "https://data.cityofnewyork.us/resource/hv77-qnda.json";
         static string API_KEY = "WvRS9PwFThGICVdPfqUaW1RUsL6LekAtG33iyObg"; //Add your API key here inside ""
 
-        public IActionResult Index(int id)
+        public IActionResult Index()
         {
-            Exam e2 = new Exam();
+            
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
@@ -117,9 +117,10 @@ namespace MVC_EF_Start.Controllers
                     };
 
                     dbcontext.Exams.Add(e1);
-
+                    IEnumerable<Exam> x = new List<Exam>();
+                    var test = (from name in dbcontext.Exams select name).ToList();
+                    ViewBag.e1 = test;
                    
-                    ViewBag.e1 = e1;
                 }
                 foreach (var i in partItems)
                 {
@@ -148,7 +149,7 @@ namespace MVC_EF_Start.Controllers
                 // This is a useful place to insert a breakpoint and observe the error message
                 Console.WriteLine(e.Message);
             }
-            return View(e2);
+            return View();
         }
         public IActionResult Create()
         {
