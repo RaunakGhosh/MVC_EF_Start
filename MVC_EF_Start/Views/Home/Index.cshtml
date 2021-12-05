@@ -45,17 +45,20 @@
                 <td> @Html.ActionLink("readData", "readData", new { id = @ViewBag.examID }, new { @class = "btn btn-success" }) </td>*@
 
 
-            <div>
-                <form asp-controller="Home" asp-action="Update" method="post">
-                    <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Update</button>
-                </form>
-                <form asp-controller="Home" asp-action="Create" method="post">
-                    <button type="submit" class="btn btn-primary btn-sm" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create" style="float:left; margin-left:10px;border-radius:150px;">Create Details</button>
-                </form>
-                <form asp-controller="Home" asp-action="Delete" method="post">
-                    <button type="submit" class="btn btn-danger" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
-                </form>
-            </div>
+<div>
+    <form asp-controller="Home" asp-action="Index" method="post">
+        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Index" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Home</button>
+    </form>
+    <form asp-controller="Home" asp-action="Update" method="post">
+        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Update</button>
+    </form>
+    <form asp-controller="Home" asp-action="Create" method="post">
+        <button type="submit" class="btn btn-primary btn-sm" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create" style="float:left; margin-left:10px;border-radius:150px;">Create Details</button>
+    </form>
+    <form asp-controller="Home" asp-action="Delete" method="post">
+        <button type="submit" class="btn btn-danger" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
+    </form>
+</div>
 
         }
 
@@ -105,15 +108,16 @@
     <div class="topnav">
 
         <a class="active" href="">Home</a>
-        <a asp-area="" asp-controller="Home" asp-action="">Grade Data</a>
+        <form asp-controller="Home" asp-action="Update" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
 
-        <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
+            <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
 
-        <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
-        <a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>
-        <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
-        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
-
+            <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
+            <a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>
+            <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
+            <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+        </form>
     </div>
     <!-- Slideshow container -->
     <div class="slideshow-container">
