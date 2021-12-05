@@ -254,5 +254,12 @@ namespace MVC_EF_Start.Controllers
 
 
         }
+        // Enock start
+        public IActionResult Profile()
+        {
+
+            return View();
+        }
+        // Enock end
     }
 }
