@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace MVC_EF_Start.Models
 {
-
+    public class App_Models
+    {
+        public List<Exam> Data { get; set; }
+    }
     
     public class Exam
     {
+        
         [Key]
         public int examID { get; set; }
         public string mean_scale_score { get; set; }
@@ -27,7 +31,7 @@ namespace MVC_EF_Start.Models
         public string level_3_4_2 { get; set; }
         [Required]
         public Category cat_id { get; set; }
-
+        
     }
     public class Participants
     {

@@ -17,6 +17,7 @@ using Newtonsoft.Json.Linq;
 using Nancy.Json;
 using MVC_EF_Start.DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace MVC_EF_Start.Controllers
 {
@@ -34,7 +35,7 @@ namespace MVC_EF_Start.Controllers
 
         public IActionResult Index(int id)
         {
-
+            Exam e2 = new Exam();
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
@@ -96,25 +97,7 @@ namespace MVC_EF_Start.Controllers
                     category = (string)x["category"]
 
                 }).ToList();
-                //foreach (var x in examItems)
-                //{
-                   
-                    
-                //    //year = x['year'];
-                //    //grade = x['grade'];
-                //    //number_tested = x['number_tested'];
-                //    //mean_score = x['mean_scale_score'];
-                //    //level_1_1 = x['level_1_1'];
-                //    //level_1_2 = x['level_1_2'];
-                //    //level_2_1 = x['level_2_1'];
-                //    //level_2_2 = x['level_2_2'];
-                //    //level_3_1 = x['level_3_1'];
-                //    //level_3_2 = x['level_3_2'];
-                //    //level_4_1 = x['level_4_1'];
-                //    //level_4_2 = x['level_4_2'];
-                //    //level_3_4_1 = x['level_3_4_1'];
-                //    //level_3_4_2 = x['level_3_4_2'];
-                //}
+                
                     foreach(var i in examItems)
                 {
                     Exam e1 = new Exam()
@@ -132,7 +115,11 @@ namespace MVC_EF_Start.Controllers
                         level_3_4_1 = i.level_3_4_1,
                         level_3_4_2 = i.level_3_4_2
                     };
+
                     dbcontext.Exams.Add(e1);
+
+                   
+                    ViewBag.e1 = e1;
                 }
                 foreach (var i in partItems)
                 {
@@ -161,7 +148,7 @@ namespace MVC_EF_Start.Controllers
                 // This is a useful place to insert a breakpoint and observe the error message
                 Console.WriteLine(e.Message);
             }
-            return View();
+            return View(e2);
         }
         public IActionResult Create()
         {
@@ -231,28 +218,45 @@ namespace MVC_EF_Start.Controllers
         ///   Hence we join the elements in the collections into strings in the view model
         /// </summary>
         /// <returns>View that will display the chart</returns>
-        public IActionResult Update(string cond)
-        {
+        //public IActionResult Update(string cond)
+        //{
             
-            //fetch the records which match the given condition
-            var level = dbcontext.Exams.Where(c => c.level_1_1 == cond).First();
+        //    //fetch the records which match the given condition
+        //    var level = dbcontext.Exams.Where(c => c.level_1_1 == cond).First();
 
-            return View(level);
+        //    return View(level);
+        //}
+        public async Task<IActionResult> Update(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var getExamDetails = await dbcontext.Exams.FindAsync(id);
+            return View(getExamDetails);
         }
         [HttpPost]
-        public IActionResult UpdateRecord(Exam data)
+        public async Task<IActionResult> Update(Exam data)
         {
-            var exe = dbcontext.Exams.FirstOrDefault(x => x.examID == data.examID);
 
-            if (exe != null)
+            if (ModelState.IsValid)
             {
-                exe.level_1_1 = data.level_1_1;
-                dbcontext.SaveChanges();
+                dbcontext.Update(data);
+                await dbcontext.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
 
+            return View(data);
+        }
 
-
-            return RedirectToAction("mean", new { val = exe.mean_scale_score });
+        public async Task<IActionResult> readData(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            var getExamDetails = await dbcontext.Exams.FindAsync(id);
+            return View(getExamDetails);
         }
         public IActionResult Delete(string cond)
         {
@@ -268,7 +272,7 @@ namespace MVC_EF_Start.Controllers
 
             return RedirectToAction("mean", new { val = exe.mean_scale_score });
         }
-        public ViewResult DemoChart(Exam e)
+        public ViewResult DemoChart()
         {
             string[] chartcols = { "#FFA07A", "#E9967A" };
             List<string> levels = new List<string>();

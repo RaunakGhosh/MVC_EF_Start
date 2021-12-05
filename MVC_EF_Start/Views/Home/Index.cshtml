@@ -1,5 +1,4 @@
-﻿@model IEnumerable<MVC_EF_Start.Models.Exam> 
-
+﻿
 @{
     ViewData["Title"] = "Index";
 }
@@ -41,8 +40,8 @@
     <table class="table">
         <thead>
             <tr>
-         
-                <th>
+
+                @*<th>
                     @Html.DisplayNameFor(model => model.level_1_1)
                 </th>
                 <th>
@@ -59,40 +58,38 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.level_3_2)
-                </th>
+                </th>*@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in ViewBag.e1)
             {
-              
-                @Html.DisplayNameFor(model => model.level_1_1)
-               
-                @Html.DisplayNameFor(model => model.level_1_2)
-            
-                @Html.DisplayNameFor(model => model.level_2_1)
-          
-                @Html.DisplayNameFor(model => model.level_2_2)
-           
-                @Html.DisplayNameFor(model => model.level_3_1)
-         
-                @Html.DisplayNameFor(model => model.level_3_2)
-                }
+                <h1></h1>
 
-                </tbody>
+                @*@Html.DisplayFor( item.level_1_1)
+
+                @Html.DisplayFor( item.level_1_2)*@
+
+              
+
+            <td> @Html.ActionLink("Update", "Update", new { id = item }, new { @class = "btn btn-primary" }) </td>
+            <td> @Html.ActionLink("readData", "readData", new { id = item }, new { @class = "btn btn-success" }) </td>
+        }
+
+            </tbody>
         </table>
     <div class="topnav">
 
         <a class="active" href="">Home</a>
         <a asp-area="" asp-controller="Home" asp-action="">Grade Data</a>
-      
+
         <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
-      
+
         <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
-      
+
         <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
         <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
-      
+
     </div>
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -141,7 +138,13 @@
     </p>
 
 
-
+    <table>
+        <tr>
+            <td> <button type="button" onclick="alert('Row Created')" asp-action="Create">Create Row</button></td>
+            
+            <td><button type="button" onclick="alert('Row Deleted')" asp-action="Delete">Delete Row</button></td>
+        </tr>
+    </table>
 
 
     <!--JS link-->
