@@ -108,16 +108,20 @@
     <div class="topnav">
 
         <a class="active" href="">Home</a>
-        <form asp-controller="Home" asp-action="Update" method="post">
+        <form asp-controller="Home" asp-action="Create" method="post">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
-
-            <a asp-area="" asp-controller="Home" asp-action="Table2">Level Numeric Data</a>
-
-            <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
-            <a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>
-            <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
-            <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
         </form>
+        <form asp-controller="Home" asp-action="Update" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="readData" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
+        </form>
+        <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
+        <a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>
+        <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
+        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+
     </div>
     <!-- Slideshow container -->
     <div class="slideshow-container">
@@ -166,13 +170,7 @@
     </p>
 
 
-    <table>
-        <tr>
-            <td> <button type="button" onclick="alert('Row Created')" asp-action="Create">Create Row</button></td>
-
-            <td><button type="button" onclick="alert('Row Deleted')" asp-action="Delete">Delete Row</button></td>
-        </tr>
-    </table>
+   
 
 
     <!--JS link-->

@@ -201,10 +201,9 @@ namespace MVC_EF_Start.Controllers
 
         public async Task<IActionResult> readData(int? id)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Index");
-            }
+            
+                
+            
             var getExamDetails = await dbcontext.Exams.FindAsync(id);
             return View(getExamDetails);
         }
