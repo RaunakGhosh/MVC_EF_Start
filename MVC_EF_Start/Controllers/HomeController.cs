@@ -157,14 +157,16 @@ namespace MVC_EF_Start.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Exam e)
+        public async Task<IActionResult> Create(Participants e)
         {
-            if (ModelState.IsValid)
+           if(ModelState.IsValid)
             {
                 dbcontext.Add(e);
                 await dbcontext.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+               
+            
             return View();
         }
 
@@ -221,30 +223,28 @@ namespace MVC_EF_Start.Controllers
         }
         public ViewResult DemoChart()
         {
-            var results = (from x in dbcontext.Participants
-                          
-                           select new
-                           {
-                               grade = x.grade
-                           }).Take(5);
+            //var results = (from x in dbcontext.Participants
+
+            //               select new
+            //               {
+            //                   grade = x.grade
+            //               }).Take(5);
 
 
 
-            int[] label = new int[] { 1,2,3,4 };
-            List<int> labels = new List<int>(label);
+            //int[] label = new int[] { 1,2,3,4 };
+            //List<int> labels = new List<int>(label);
 
 
 
-            List<string> ChartLabels = new List<string>();
-            ChartLabels = results.Select(p => p.grade).ToList();
-           
-            ViewBag.Labels = String.Join(",", ChartLabels.Select(d => "'" + d + "'"));
-            ViewBag.Data = String.Join(",", labels.Select(d => d));
+            //List<string> ChartLabels = new List<string>();
+            //ChartLabels = results.Select(p => p.grade).ToList();
+
+            //ViewBag.Labels = String.Join(",", ChartLabels.Select(d => "'" + d + "'"));
+            //ViewBag.Data = String.Join(",", labels.Select(d => d));
 
 
-
-
-
+       
             return View();
 
 
