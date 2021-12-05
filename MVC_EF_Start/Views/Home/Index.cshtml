@@ -45,7 +45,7 @@
                 <td> @Html.ActionLink("readData", "readData", new { id = @ViewBag.examID }, new { @class = "btn btn-success" }) </td>*@
 
 
-<div>
+@*<div>
     <form asp-controller="Home" asp-action="Index" method="post">
         <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Index" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Home</button>
     </form>
@@ -58,14 +58,14 @@
     <form asp-controller="Home" asp-action="Delete" method="post">
         <button type="submit" class="btn btn-danger" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
     </form>
-</div>
+</div>*@
 
         }
 
     }
-    <table class="table">
+    <!--<table class="table">
         <thead>
-            <tr>
+            <tr>-->
 
                 @*<th>
                         @Html.DisplayNameFor(model => model.level_1_1)
@@ -85,9 +85,9 @@
                     <th>
                         @Html.DisplayNameFor(model => model.level_3_2)
                     </th>*@
-            </tr>
+            <!--</tr>
         </thead>
-        <tbody>
+        <tbody>-->
             @*@foreach (var item in ViewBag.e1)
                     {
                         <tr>
@@ -103,8 +103,8 @@
                     <td> @Html.ActionLink("readData", "readData", new { id = item }, new { @class = "btn btn-success" }) </td>
                 }*@
 
-        </tbody>
-    </table>
+        <!--</tbody>
+    </table>-->
     <div class="topnav">
 
         <a class="active" href="">Home</a>
@@ -117,9 +117,17 @@
         <form asp-controller="Home" asp-action="readData" method="post">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
         </form>
-        <a asp-area="" asp-controller="Home" asp-action="Table3">Level Percentage Data</a>
-        <a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>
-        <a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>
+        <form asp-controller="Home" asp-action="Delete" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete">Delete Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="DemoChart" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
+        </form>
+        @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
+    <form asp-controller="Home" asp-action="Profile" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+    </form>
+        @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
         <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
 
     </div>

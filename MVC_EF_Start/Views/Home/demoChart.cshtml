@@ -22,44 +22,47 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-    google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.load('current', { 'packages': ['bar'] });
         google.charts.setOnLoadCallback(drawData);
 
 
 
- function drawData() {
-var data = new google.visualization.arrayToDataTable([
-['Year', 'Grade'],
-["2008", 346],
-["2009", 547],
-["2010", 387],
-["2011", 845],
-['2012', 865],
+        function drawData() {
+            var data = new google.visualization.arrayToDataTable([
+                ['Year', 'Grade'],
+                ["2008", 346],
+                ["2009", 547],
+                ["2010", 387],
+                ["2011", 845],
+                ['2012', 865],
 
-]);
+            ]);
 
 
 
-var options = {
-title: 'Year Vs Grades',
-width: 900,
-legend: { position: 'none' },
-chart: {
-title: 'Year Vs Grades'
-},
-bars: 'horizontal', // Required for Material Bar Charts.
-axes: {
-x: {
-        0: { side: 'top', label: 'Grades' } // Top x-axis.
-}
-},
-bar: { groupWidth: "90%" }
-};
+            var options = {
+                title: 'Year Vs Grades',
+                width: 900,
+                legend: { position: 'none' },
+                chart: {
+                    title: 'Year Vs Grades'
+                },
+                bars: 'horizontal', // Required for Material Bar Charts.
+                axes: {
+                    x: {
+                        0: { side: 'top', label: 'Grades' } // Top x-axis.
+                    }
+                },
+                bar: { groupWidth: "90%" }
+            };
 
-var chart = new google.charts.Bar(document.getElementById('top_x_div'));
-chart.draw(data, options);
-};
+            var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+            chart.draw(data, options);
+        };
     </script>
     <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 </body>
 </html>
