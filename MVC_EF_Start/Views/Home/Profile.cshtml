@@ -66,7 +66,7 @@
     <!-- Enock start-->
     <div class="topnav">
 
-        <a class="active" href="">Home</a>
+        <a  asp-action="Index">Home</a>
         <form asp-controller="Home" asp-action="Create" method="post">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
         </form>
@@ -83,12 +83,10 @@
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
         </form>
         @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
-        <form asp-controller="Home" asp-action="Profile" method="post">
+        <form asp-controller="Home" asp-action="Profile" method="post" class="active">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
         </form>
         @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
-        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
-
     </div>
     <!-- Enock end-->
     <!-- MAIN (Center website) -->
@@ -119,7 +117,7 @@
                 <div class="content">
                     <img src="~/img/Enock.jpg" alt="Enock" style="width:100%">
                     <h3>Enock</h3>
-                    <p> Master of Business Analytics & Information Systems student at The University of South Florida and a certified data whisperer working with The AI Institute (France) and iXperience (South Africa). In this project, he worked on the datasets for the tables and creating the content for the pages.</p>
+                    <p> Master of Business Analytics & Information Systems student at The University of South Florida and a certified data whisperer working with The AI Institute (France) and iXperience (South Africa). In this project, he worked on the datasets for the tables and creating the content for the pages also on the publishing of the website in Azure.</p>
                     <a href="https://github.com/echemochek">Git</a>
                     <a href="https://www.linkedin.com/in/enock-chemochek/">LinkedIn</a>
                 </div>
@@ -135,12 +133,18 @@
 
             <!-- END GRID -->
         </div>
-        <h3>Database model driving the website</h3>
+        
         <div class="content">
+            <h3>Database model driving the website</h3>
             <img src="~/img/ERD.jpeg" alt="ERD" style="width: 50% ">
 
         </div>
+        
+        <div class="content">
+            <h3>Git Logs</h3>
+            <img src="~/img/gitlog.JPG" alt="gitlog" style="width: 50% ">
 
+        </div>
 
 
         <!-- END MAIN -->

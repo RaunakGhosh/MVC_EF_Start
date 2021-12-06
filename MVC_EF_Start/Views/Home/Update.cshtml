@@ -32,7 +32,7 @@
 <body>
     <div class="topnav">
 
-        <a href="">Create Data</a>
+        <a asp-action="Index">Home</a>
         <form asp-controller="Home" asp-action="Create" method="post">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
         </form>
@@ -53,9 +53,7 @@
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
         </form>
         @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
-        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
         </div>
-        <h1>Update</h1>
 
 
 

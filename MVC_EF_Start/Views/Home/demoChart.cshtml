@@ -28,7 +28,7 @@
 <body>
     <div class="topnav">
 
-        <a class="active" href="">Home</a>
+        <a class="active" asp-action="Index">Home</a>
         <form asp-controller="Home" asp-action="Create" method="post">
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
         </form>
@@ -49,7 +49,6 @@
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
         </form>
         @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
-        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
 
     </div>
     <h1> Bar chart example</h1>
