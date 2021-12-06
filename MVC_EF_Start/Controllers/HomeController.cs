@@ -178,34 +178,56 @@ namespace MVC_EF_Start.Controllers
       
         public async Task<IActionResult> Update(int? id)
         {
-            if (id == null)
+            using (dbcontext)
             {
-                return RedirectToAction("Index");
+                var data = dbcontext.Exams.Where(x => x.examID == id).SingleOrDefault();
+                return View(data);
             }
-            var getExamDetails = await dbcontext.Exams.FindAsync(id);
-            return View(getExamDetails);
+           
         }
         [HttpPost]
-        public async Task<IActionResult> Update(Exam data)
+        public async Task<IActionResult> Update(Exam data, int id)
         {
-            var errors = ModelState.Values.SelectMany(v => v.Errors);
-            if (ModelState.IsValid)
-            {
-                dbcontext.Update(data);
-                await dbcontext.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
 
-            return View(data);
+            using (dbcontext)
+            {
+
+                // Use of lambda expression to access
+                // particular record from a database
+                 var examData = dbcontext.Exams.FirstOrDefault(x => x.examID == id);
+
+                // Checking if any such record exist 
+                if (examData != null)
+                {
+                    examData.level_1_1 = data.level_1_1;
+                    examData.level_1_2 = data.level_1_2;
+                   
+                    dbcontext.SaveChanges();
+
+                    // It will redirect to 
+                    // the Read method
+                    return RedirectToAction("readData");
+                }
+                else
+                    return View();
+            }
+            //var errors = ModelState.Values.SelectMany(v => v.Errors);
+            //if (ModelState.IsValid)
+            //{
+            //    dbcontext.Update(data);
+            //    await dbcontext.SaveChangesAsync();
+            //    return RedirectToAction("Index");
+            //}
+
+            
         }
 
-        public async Task<IActionResult> readData(int? id)
+        public async Task<IActionResult> readData()
         {
-            
-                
-            
-            var getExamDetails = await dbcontext.Exams.FindAsync(id);
-            return View(getExamDetails);
+
+            ViewBag.level1 =  dbcontext.Exams.Select(x => new { x.examID,x.mean_scale_score,x.number_tested, x.level_1_1, x.level_1_2,x.level_2_1 }).Take(20);
+
+            return View();
         }
         public async Task<IActionResult> Delete(int? id)
         {

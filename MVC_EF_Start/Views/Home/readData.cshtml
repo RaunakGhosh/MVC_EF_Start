@@ -1,4 +1,4 @@
-﻿@model MVC_EF_Start.Models.Exam
+﻿@model MVC_EF_Start.Models.Exam 
 
 @{
     ViewData["Title"] = "readData";
@@ -10,84 +10,17 @@
     <h4>Exam</h4>
     <hr />
     <table class="row">
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.examID)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.examID)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.mean_scale_score)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.mean_scale_score)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.number_tested)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.number_tested)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_1_1)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_1_1)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_1_2)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_1_2)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_2_1)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_2_1)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_2_2)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_2_2)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_3_1)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_3_1)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_3_2)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_3_2)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_4_1)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_4_1)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_4_2)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_4_2)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_3_4_1)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_3_4_1)
-        </td>
-        <tr class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.level_3_4_2)
-        </tr>
-        <td class = "col-sm-10">
-            @Html.DisplayFor(model => model.level_3_4_2)
-        </td>
+       
+        <tbody>
+                @foreach (var p in ViewBag.level1)
+                {
+                    <tr>
+                        <td>@p</td>
+                    </tr>
+
+                }
+            
+        </tbody>
     </table>
 </div>
 <div>
