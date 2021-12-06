@@ -1,4 +1,11 @@
-﻿
+﻿<!-- Enock start-->
+@model MVC_EF_Start.Models.Exam
+
+@{
+    ViewData["Title"] = "Update";
+}
+<!-- Enock end-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,13 +63,34 @@
     </style>
 </head>
 <body>
+    <!-- Enock start-->
     <div class="topnav">
-        <a href="index.html">Project</a>
-        <a href="table1.html">Grade Data</a>
-        <a href="table2.html">Level numeric Data</a>
-        <a href="table3.html">Level percentage Data</a>
-        <a class="active" href="profile.html">About us</a>
+
+        <a class="active" href="">Home</a>
+        <form asp-controller="Home" asp-action="Create" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="Update" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="readData" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="Delete" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete">Delete Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="DemoChart" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
+        </form>
+        @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
+        <form asp-controller="Home" asp-action="Profile" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+        </form>
+        @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
+        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+
     </div>
+    <!-- Enock end-->
     <!-- MAIN (Center website) -->
     <div class="main">
 
@@ -76,7 +104,7 @@
         <div class="row">
             <div class="column">
                 <div class="content">
-                    <img src="my-pic.jpg" alt="Raunak" style="width:100%">
+                    <img src="~/img/my-pic.jpg" alt="Raunak" style="width:100%">
                     <h3>Raunak Ghosh</h3>
                     <p>
                         Master's student in Business Analytics and Information Systems in University of South Florida.
@@ -89,7 +117,7 @@
             </div>
             <div class="column">
                 <div class="content">
-                    <img src="Enock.jpg" alt="Enock" style="width:100%">
+                    <img src="~/img/Enock.jpg" alt="Enock" style="width:100%">
                     <h3>Enock</h3>
                     <p> Master of Business Analytics & Information Systems student at The University of South Florida and a certified data whisperer working with The AI Institute (France) and iXperience (South Africa). In this project, he worked on the datasets for the tables and creating the content for the pages.</p>
                     <a href="https://github.com/echemochek">Git</a>
@@ -98,7 +126,7 @@
             </div>
             <div class="column">
                 <div class="content">
-                    <img src="abhi.jpg" alt="Abhi" style="width:100%">
+                    <img src="~/img/abhi.jpg" alt="Abhimanyu" style="width:100%">
                     <h3>Abhimanyu</h3>
                     <p>Worked on responsive layout design, color schemes and JavaScript for fade in animations</p>
                     <a href="https://github.com/Abhimanyu789">Git</a>
