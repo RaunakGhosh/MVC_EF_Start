@@ -33,14 +33,14 @@
 
 <div class="topnav">
 
-    <a class="active" href="">Home</a>
+    <a  href="" asp-action="Index">Home</a>
     <form asp-controller="Home" asp-action="Create" method="post">
         <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
     </form>
     <form asp-controller="Home" asp-action="Update" method="post">
         <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
     </form>
-    <form asp-controller="Home" asp-action="readData" method="post">
+    <form asp-controller="Home"  class="active" asp-action="readData" method="post">
         <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
     </form>
     <form asp-controller="Home" asp-action="Delete" method="post">
