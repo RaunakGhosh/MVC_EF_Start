@@ -11,8 +11,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="./css/main.css">
-    <title>Assignment - 3</title>
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <title>Assignment - 5</title>
     <style>
         p {
             color: #333;
@@ -45,20 +45,20 @@
                 <td> @Html.ActionLink("readData", "readData", new { id = @ViewBag.examID }, new { @class = "btn btn-success" }) </td>*@
 
 
-@*<div>
-    <form asp-controller="Home" asp-action="Index" method="post">
-        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Index" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Home</button>
-    </form>
-    <form asp-controller="Home" asp-action="Update" method="post">
-        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Update</button>
-    </form>
-    <form asp-controller="Home" asp-action="Create" method="post">
-        <button type="submit" class="btn btn-primary btn-sm" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create" style="float:left; margin-left:10px;border-radius:150px;">Create Details</button>
-    </form>
-    <form asp-controller="Home" asp-action="Delete" method="post">
-        <button type="submit" class="btn btn-danger" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
-    </form>
-</div>*@
+            @*<div>
+                    <form asp-controller="Home" asp-action="Index" method="post">
+                        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Index" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Home</button>
+                    </form>
+                    <form asp-controller="Home" asp-action="Update" method="post">
+                        <button class="btn btn-success" type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update" style="float:inline-start;font-size: 15px;margin-left:10px;border-radius:150px;">Update</button>
+                    </form>
+                    <form asp-controller="Home" asp-action="Create" method="post">
+                        <button type="submit" class="btn btn-primary btn-sm" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create" style="float:left; margin-left:10px;border-radius:150px;">Create Details</button>
+                    </form>
+                    <form asp-controller="Home" asp-action="Delete" method="post">
+                        <button type="submit" class="btn btn-danger" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete" style="float:right; border-radius:150px;margin-right:18px;">Delete info</button>
+                    </form>
+                </div>*@
 
         }
 
@@ -66,44 +66,43 @@
     <!--<table class="table">
         <thead>
             <tr>-->
-
-                @*<th>
-                        @Html.DisplayNameFor(model => model.level_1_1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.level_1_2)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.level_2_1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.level_2_2)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.level_3_1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.level_3_2)
-                    </th>*@
-            <!--</tr>
-        </thead>
-        <tbody>-->
-            @*@foreach (var item in ViewBag.e1)
-                    {
-                        <tr>
-                            <td>
-                                @item
-                            </td>
-
-
-                        </tr>
+    @*<th>
+            @Html.DisplayNameFor(model => model.level_1_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level_1_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level_2_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level_2_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level_3_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.level_3_2)
+        </th>*@
+    <!--</tr>
+    </thead>
+    <tbody>-->
+    @*@foreach (var item in ViewBag.e1)
+            {
+                <tr>
+                    <td>
+                        @item
+                    </td>
 
 
-                    <td> @Html.ActionLink("Update", "Update", new { id = item }, new { @class = "btn btn-primary" }) </td>
-                    <td> @Html.ActionLink("readData", "readData", new { id = item }, new { @class = "btn btn-success" }) </td>
-                }*@
+                </tr>
 
-        <!--</tbody>
+
+            <td> @Html.ActionLink("Update", "Update", new { id = item }, new { @class = "btn btn-primary" }) </td>
+            <td> @Html.ActionLink("readData", "readData", new { id = item }, new { @class = "btn btn-success" }) </td>
+        }*@
+
+    <!--</tbody>
     </table>-->
     <div class="topnav">
 
@@ -124,9 +123,9 @@
             <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
         </form>
         @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
-    <form asp-controller="Home" asp-action="Profile" method="post">
-        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
-    </form>
+        <form asp-controller="Home" asp-action="Profile" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+        </form>
         @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
         <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
 
@@ -178,7 +177,7 @@
     </p>
 
 
-   
+
 
 
     <!--JS link-->

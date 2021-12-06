@@ -18,6 +18,7 @@ using Nancy.Json;
 using MVC_EF_Start.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using System.Collections;
+using System.Data.Entity;
 
 namespace MVC_EF_Start.Controllers
 {
@@ -273,9 +274,9 @@ namespace MVC_EF_Start.Controllers
        
             return View();
 
+        
 
-
-        }
+    }
         // Enock start
         public IActionResult Profile()
         {

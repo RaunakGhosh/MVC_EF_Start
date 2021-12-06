@@ -3,91 +3,141 @@
 @{
     ViewData["Title"] = "Update";
 }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <title>Assignment - 5</title>
+    <style>
+        p {
+            color: #333;
+            text-align: justify;
+            padding: 10px;
+            margin-left: 10px;
+        }
 
-<h1>Update</h1>
+        h1 {
+            color: darkgreen;
+        }
 
-<h4>Exam</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Update">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="examID" class="control-label"></label>
-                <input asp-for="examID" class="form-control" readonly/>
-                <span asp-validation-for="examID" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <label asp-for="mean_scale_score" class="control-label"></label>
-                <input asp-for="mean_scale_score" class="form-control" />
-                <span asp-validation-for="mean_scale_score" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="number_tested" class="control-label"></label>
-                <input asp-for="number_tested" class="form-control" />
-                <span asp-validation-for="number_tested" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_1_1" class="control-label"></label>
-                <input asp-for="level_1_1" class="form-control" />
-                <span asp-validation-for="level_1_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_1_2" class="control-label"></label>
-                <input asp-for="level_1_2" class="form-control" />
-                <span asp-validation-for="level_1_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_2_1" class="control-label"></label>
-                <input asp-for="level_2_1" class="form-control" />
-                <span asp-validation-for="level_2_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_2_2" class="control-label"></label>
-                <input asp-for="level_2_2" class="form-control" />
-                <span asp-validation-for="level_2_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_3_1" class="control-label"></label>
-                <input asp-for="level_3_1" class="form-control" />
-                <span asp-validation-for="level_3_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_3_2" class="control-label"></label>
-                <input asp-for="level_3_2" class="form-control" />
-                <span asp-validation-for="level_3_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_4_1" class="control-label"></label>
-                <input asp-for="level_4_1" class="form-control" />
-                <span asp-validation-for="level_4_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_4_2" class="control-label"></label>
-                <input asp-for="level_4_2" class="form-control" />
-                <span asp-validation-for="level_4_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_3_4_1" class="control-label"></label>
-                <input asp-for="level_3_4_1" class="form-control" />
-                <span asp-validation-for="level_3_4_1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="level_3_4_2" class="control-label"></label>
-                <input asp-for="level_3_4_2" class="form-control" />
-                <span asp-validation-for="level_3_4_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        img {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+
+    <script src="./js/main.js"></script>
+</head>
+<div class="topnav">
+
+    <a  href="">Create Data</a>
+    <form asp-controller="Home" asp-action="Create" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
+    </form>
+    <form class="active" asp-controller="Home" asp-action="Update" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="readData" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="Delete" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete">Delete Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="DemoChart" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
+    </form>
+    @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
+    <form asp-controller="Home" asp-action="Profile" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+    </form>
+    @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
+    <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+    <h1>Update</h1>
+
+    <h4>Exam</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @*<div class="form-group">
+                        <label asp-for="examID" class="control-label"></label>
+                        <input asp-for="examID" class="form-control" readonly/>
+                        <span asp-validation-for="examID" class="text-danger"></span>
+                    </div>*@
+                <div class="form-group">
+                    <label asp-for="mean_scale_score" class="control-label"></label>
+                    <input asp-for="mean_scale_score" class="form-control" />
+                    <span asp-validation-for="mean_scale_score" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="number_tested" class="control-label"></label>
+                    <input asp-for="number_tested" class="form-control" />
+                    <span asp-validation-for="number_tested" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_1_1" class="control-label"></label>
+                    <input asp-for="level_1_1" class="form-control" />
+                    <span asp-validation-for="level_1_1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_1_2" class="control-label"></label>
+                    <input asp-for="level_1_2" class="form-control" />
+                    <span asp-validation-for="level_1_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_2_1" class="control-label"></label>
+                    <input asp-for="level_2_1" class="form-control" />
+                    <span asp-validation-for="level_2_1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_2_2" class="control-label"></label>
+                    <input asp-for="level_2_2" class="form-control" />
+                    <span asp-validation-for="level_2_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_3_1" class="control-label"></label>
+                    <input asp-for="level_3_1" class="form-control" />
+                    <span asp-validation-for="level_3_1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_3_2" class="control-label"></label>
+                    <input asp-for="level_3_2" class="form-control" />
+                    <span asp-validation-for="level_3_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_4_1" class="control-label"></label>
+                    <input asp-for="level_4_1" class="form-control" />
+                    <span asp-validation-for="level_4_1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_4_2" class="control-label"></label>
+                    <input asp-for="level_4_2" class="form-control" />
+                    <span asp-validation-for="level_4_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_3_4_1" class="control-label"></label>
+                    <input asp-for="level_3_4_1" class="form-control" />
+                    <span asp-validation-for="level_3_4_1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="level_3_4_2" class="control-label"></label>
+                    <input asp-for="level_3_4_2" class="form-control" />
+                    <span asp-validation-for="level_3_4_2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

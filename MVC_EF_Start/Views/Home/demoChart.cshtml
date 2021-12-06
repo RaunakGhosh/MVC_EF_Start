@@ -11,12 +11,49 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
     <meta charset="utf-8" />
     <title>Chart.js examples</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <title>Assignment - 5</title>
+
+
 </head>
 <body>
+    <div class="topnav">
+
+        <a class="active" href="">Home</a>
+        <form asp-controller="Home" asp-action="Create" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="Update" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="readData" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="Delete" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete">Delete Data</a>
+        </form>
+        <form asp-controller="Home" asp-action="DemoChart" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
+        </form>
+        @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
+        <form asp-controller="Home" asp-action="Profile" method="post">
+            <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+        </form>
+        @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
+        <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+
+    </div>
     <h1> Bar chart example</h1>
+
 
     <canvas id="barchartexample" width="100" height="50"></canvas>
 
@@ -64,5 +101,8 @@
     <div>
         <a asp-action="Index">Back to List</a>
     </div>
+
+    <script src="./js/main.js"></script>
 </body>
+
 </html>

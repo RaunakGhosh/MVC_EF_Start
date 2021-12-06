@@ -4,93 +4,141 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <title>Assignment - 5</title>
+    <style>
+        p {
+            color: #333;
+            text-align: justify;
+            padding: 10px;
+            margin-left: 10px;
+        }
 
-<h3>Are you sure you want to delete this?</h3>
+        h1 {
+            color: darkgreen;
+        }
+
+        img {
+            width: 100%;
+            height: 700px;
+        }
+    </style>
+</head>
+<div class="topnav">
+
+    <a class="active" href="">Home</a>
+    <form asp-controller="Home" asp-action="Create" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Create">Create Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="Update" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Update">Update Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="readData" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="readData">Read Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="Delete" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Delete">Delete Data</a>
+    </form>
+    <form asp-controller="Home" asp-action="DemoChart" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="DemoChart">Chart Data</a>
+    </form>
+    @*<a class="list-menu" asp-area="" asp-controller="Home" asp-action="DemoChart">Chart</a>*@
+    <form asp-controller="Home" asp-action="Profile" method="post">
+        <a type="submit" name="examID" value=@ViewBag.examID asp-controller="Home" asp-action="Profile">About Us</a>
+    </form>
+    @*<a asp-area="" asp-controller="Home" asp-action="Profile">About Us</a>*@
+    <a href="javascript:void(0);" class="icon" onclick="homepageFunc()">  </a>
+
+</div>
 <div>
     <h4>Exam</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.examID)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.examID)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.mean_scale_score)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.mean_scale_score)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.number_tested)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.number_tested)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_1_1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_1_1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_1_2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_1_2)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_2_1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_2_1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_2_2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_2_2)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_3_1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_3_1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_3_2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_3_2)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_4_1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_4_1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_4_2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_4_2)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_3_4_1)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_3_4_1)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.level_3_4_2)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.level_3_4_2)
         </dd>
     </dl>
-    
+
+    <script src="./js/main.js"></script>
     <form asp-action="Delete">
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
